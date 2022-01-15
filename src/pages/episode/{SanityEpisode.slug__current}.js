@@ -27,25 +27,24 @@ export default function SanityEpisode({ data }) {
 
   return (
     <Layout title={episode.title} description={episode.description}>
-      <GatsbyImage
-        image={episode.image.asset.gatsbyImageData}
-        alt={episode.title}
-      />
-      <h1>{episode.title}</h1>
-      <p>
-        (posted {episode.date}) — {episode.description}
-      </p>
-      <ul>
-        <li>
-          <a href={`https://www.learnwithjason.dev/${episode.slug.current}`}>
-            full episode and details
-          </a>
-        </li>
-        <li>
-          <a href={`https://youtu.be/${episode.youtubeID}`}>watch on YouTube</a>
-        </li>
-      </ul>
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+      {episode.image?.asset?.gatsbyImageData &&
+        <>
+          <GatsbyImage
+            image={episode.image.asset.gatsbyImageData}
+            alt={episode.title} /><h1>{episode.title}</h1><p>
+            (posted {episode.date}) — {episode.description}
+          </p><ul>
+            <li>
+              <a href={`https://www.learnwithjason.dev/${episode.slug.current}`}>
+                full episode and details
+              </a>
+            </li>
+            <li>
+              <a href={`https://youtu.be/${episode.youtubeID}`}>watch on YouTube</a>
+            </li>
+          </ul>
+        </>
+      }
     </Layout>
   );
 }
